@@ -1,8 +1,8 @@
 {
-	"name": "the-module",
+	"name": "sort-obj",
 	"version": "0.0.0",
-	"description": "My awesome module.",
-	"repository": "https://github.com/Richienb/the-module.git",
+	"description": "Sort the keys and values of an object.",
+	"repository": "https://github.com/Richienb/sort-obj.git",
 	"author": "Richie Bendall <richiebendall@gmail.com>",
 	"license": "MIT",
 	"main": "index.js",
@@ -17,14 +17,49 @@
 		"lint": "xo",
 		"test": "xo && ava"
 	},
-	"keywords": [],
-	"dependencies": {},
+	"keywords": [
+		"sort",
+		"object",
+		"map",
+		"function",
+		"modify",
+		"change",
+		"key",
+		"value"
+	],
+	"dependencies": {
+		"fromentries": "^1.2.0",
+		"type-fest": "^0.16.0"
+	},
 	"devDependencies": {
+		"alpha-sort": "^3.1.0",
 		"ava": "^3.9.0",
 		"eslint-config-richienb": "^0.4.2",
+		"num-sort": "^2.1.0",
 		"xo": "^0.32.0"
 	},
 	"xo": {
-		"extends": "richienb"
+		"extends": "richienb",
+		"rules": {
+			"import/no-unresolved": [
+				"error",
+				{
+					"ignore": [
+						"type-fest"
+					]
+				}
+			],
+			"no-unused-vars": [
+				"error",
+				{
+					"vars": "all",
+					"args": "after-used",
+					"ignoreRestSiblings": true,
+					"argsIgnorePattern": "^_",
+					"caughtErrors": "all",
+					"caughtErrorsIgnorePattern": "^_"
+				}
+			]
+		}
 	}
 }

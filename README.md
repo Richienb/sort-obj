@@ -1,41 +1,57 @@
-# the-module [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/the-module/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/the-module)
+# sort-obj [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/sort-obj/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/sort-obj)
 
-My awesome module.
+Sort the keys and values of an object.
 
-[![NPM Badge](https://nodei.co/npm/the-module.png)](https://npmjs.com/package/the-module)
+[![NPM Badge](https://nodei.co/npm/sort-obj.png)](https://npmjs.com/package/sort-obj)
 
 ## Install
 
 ```sh
-npm install the-module
+npm install sort-obj
 ```
 
 ## Usage
 
 ```js
-const theModule = require("the-module");
+const sortObject = require("sort-obj");
+const numberSort = require("num-sort");
+const alphaSort = require("alpha-sort");
 
-theModule("unicorns");
-//=> 'unicorns & rainbows'
+sortObject({ c: 2, b: 3, a: 1 }, ([a], [b]) => alphaSort.descending);
+//=> { a: 1, b: 3, c: 2 }
+
+sortObject({ c: 2, b: 3, a: 1 }, ([_a, a], [_b, b]) => numberSort.descending);
+//=> { a: 1, c: 2, b: 3 }
+
+sortObject.keys({ c: 2, b: 3, a: 1 }, alphaSort.descending);
+//=> { a: 1, b: 3, c: 2 }
+
+sortObject.values({ c: 2, b: 3, a: 1 }, numberSort.descending);
+//=> { a: 1, c: 2, b: 3 }
 ```
 
 ## API
 
-### theModule(input, options?)
+### sortObject(input, mapper)
+
+Sort an object by its keys and values.
+
+### sortObject.keys(input, mapper)
+
+Sort an object by its keys.
+
+### sortObject.values(input, mapper)
+
+Sort an object by its values.
 
 #### input
 
-Type: `string`
-
-Lorem ipsum.
-
-#### options
-
 Type: `object`
 
-##### postfix
+The object to sort.
 
-Type: `string`\
-Default: `rainbows`
+#### mapper
 
-Lorem ipsum.
+Type: `function`
+
+[Compare function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
