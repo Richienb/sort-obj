@@ -1,6 +1,6 @@
 {
 	"name": "sort-obj",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "Sort the keys and values of an object.",
 	"repository": "https://github.com/Richienb/sort-obj.git",
 	"author": "Richie Bendall <richiebendall@gmail.com>",
